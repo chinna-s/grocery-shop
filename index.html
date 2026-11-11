@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fresh Mart</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>🛒 Fresh Mart</h1>
+    <input id="search" type="search" placeholder="Search groceries…">
+    <button id="cartBtn">Cart (<span id="cartCount">0</span>)</button>
+  </header>
+
+  <nav id="tabs">
+    <button class="tab active" data-tab="shopTab">Shop</button>
+    <button class="tab" data-tab="lowTab">Low Stock (<span id="lowCount">0</span>)</button>
+    <button class="tab" data-tab="stockPanel">Stock Management</button>
+    <button class="tab" data-tab="addPanel">Add New Product</button>
+  </nav>
+
+  <div id="shopTab" class="tab-content">
+    <div id="alerts"></div>
+    <main id="products"></main>
+  </div>
+
+  <section id="lowTab" class="tab-content hidden">
+    <h2>Low Stock Products</h2>
+    <p class="hint">Products at or below their low-stock alert level. Enter a quantity to restock.</p>
+    <table>
+      <thead>
+        <tr><th>Product</th><th>Available</th><th>Alert at</th><th>Status</th><th>Restock</th></tr>
+      </thead>
+      <tbody id="lowRows"></tbody>
+    </table>
+  </section>
+
+  <section id="stockPanel" class="tab-content panel hidden">
+    <h2>Stock Management</h2>
+    <p class="hint">Change the price, available quantity or alert level of any product. Type the new value and press Enter or click outside the box. Changes are saved immediately and apply to the Shop and Cart.</p>
+    <table>
+      <thead>
+        <tr><th>Product</th><th>Price (₹)</th><th>Unit</th><th>Available</th><th>Low-stock alert at</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody id="stockRows"></tbody>
+    </table>
+  </section>
+
+  <section id="addPanel" class="tab-content panel hidden">
+    <h2>Add New Product</h2>
+    <form id="addForm">
+      <input name="emoji" placeholder="Icon (e.g. 🥜)" maxlength="4">
+      <input name="name" placeholder="Name" required>
+      <input name="price" type="number" min="0" step="0.01" placeholder="Price ₹" required>
+      <input name="unit" placeholder="Unit (kg, pc…)" value="kg" required>
+      <input name="stock" type="number" min="0" step="any" placeholder="Quantity available" required>
+      <input name="lowStock" type="number" min="0" step="any" placeholder="Low-stock alert at" required>
+      <button type="submit">Add Product</button>
+    </form>
+  </section>
+
+  <aside id="cart" class="hidden">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <p class="total">Total: ₹<span id="cartTotal">0</span></p>
+    <button id="checkout">Checkout</button>
+    <button id="closeCart" class="secondary">Close</button>
+  </aside>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

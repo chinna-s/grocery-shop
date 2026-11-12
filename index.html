@@ -60,12 +60,18 @@
     </form>
   </section>
 
-  <aside id="cart" class="hidden">
-    <h2>Your Cart</h2>
+  <div id="cartBackdrop" class="hidden"></div>
+  <aside id="cart" class="hidden" role="dialog" aria-label="Your cart">
+    <div class="cart-head">
+      <h2>🛒 Your Cart</h2>
+      <button id="closeCart" class="cart-close" aria-label="Close cart" title="Close (Esc)">✕</button>
+    </div>
     <ul id="cartItems"></ul>
-    <p class="total">Total: ₹<span id="cartTotal">0</span></p>
-    <button id="checkout">Checkout</button>
-    <button id="closeCart" class="secondary">Close</button>
+    <div class="cart-foot">
+      <p class="total"><span>Total</span><strong>₹<span id="cartTotal">0</span></strong></p>
+      <button id="checkout">Checkout</button>
+      <button id="continueShopping" class="secondary">← Continue shopping</button>
+    </div>
   </aside>
 
   <script src="data.js"></script>

@@ -118,16 +118,26 @@ function renderCart() {
     if (!p) return "";
     total += p.price * qty;
     count += 1;
-    return `<li>
-      <span>${p.emoji || "📦"} ${p.name}</span>
-      <span>
-        <button data-dec="${id}">−</button>
-        <input type="number" class="cart-qty" min="0" step="any" value="${qty}" data-cartqty="${id}"> ${p.unit}
-        <button data-inc="${id}">+</button>
-        ₹${+(p.price * qty).toFixed(2)}
-      </span>
+    return `<li class="cart-item">
+      <div class="ci-emoji">${p.emoji || "📦"}</div>
+      <div class="ci-info">
+        <div class="ci-top">
+          <strong>${p.name}</strong>
+          <button class="ci-remove" data-delcart="${id}" aria-label="Remove ${p.name}" title="Remove">🗑</button>
+        </div>
+        <div class="ci-unit">₹${p.price} / ${p.unit}</div>
+        <div class="ci-bottom">
+          <div class="stepper">
+            <button data-dec="${id}" aria-label="Decrease">−</button>
+            <input type="number" class="cart-qty" min="0" step="any" value="${qty}" data-cartqty="${id}">
+            <span class="ci-u">${p.unit}</span>
+            <button data-inc="${id}" aria-label="Increase">+</button>
+          </div>
+          <span class="ci-price">₹${+(p.price * qty).toFixed(2)}</span>
+        </div>
+      </div>
     </li>`;
-  }).join("") || "<li>Cart is empty</li>";
+  }).join("") || `<li class="cart-empty"><div>🧺</div><p>Your cart is empty</p></li>`;
   $("cartTotal").textContent = +total.toFixed(2);
   $("cartCount").textContent = count;
 }
@@ -160,6 +170,7 @@ document.addEventListener("click", (e) => {
   }
   if (d.inc) changeQty(d.inc, 1);
   if (d.dec) changeQty(d.dec, -1);
+  if (d.delcart) setQty(d.delcart, 0);
   if (d.tab) {
     document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("active", t.dataset.tab === d.tab));
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -227,8 +238,15 @@ $("addForm").addEventListener("submit", (e) => {
 });
 
 $("search").addEventListener("input", (e) => { state.query = e.target.value; renderProducts(); });
-$("cartBtn").onclick = () => $("cart").classList.toggle("hidden");
-$("closeCart").onclick = () => $("cart").classList.add("hidden");
+function setCartOpen(open) {
+  $("cart").classList.toggle("hidden", !open);
+  $("cartBackdrop").classList.toggle("hidden", !open);
+}
+$("cartBtn").onclick = () => setCartOpen($("cart").classList.contains("hidden"));
+$("closeCart").onclick = () => setCartOpen(false);
+$("continueShopping").onclick = () => setCartOpen(false);
+$("cartBackdrop").onclick = () => setCartOpen(false);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") setCartOpen(false); });
 
 // Checkout reduces available stock
 $("checkout").onclick = () => {

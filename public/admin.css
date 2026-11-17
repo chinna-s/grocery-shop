@@ -1,0 +1,94 @@
+.login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px; background: linear-gradient(135deg, #e8f5e9, #f6f8f4); }
+.login-card { background: #fff; padding: 28px; border-radius: 16px; width: min(380px, 100%); display: flex; flex-direction: column; gap: 12px; box-shadow: 0 10px 30px rgba(30,60,30,.15); }
+.login-card h1 { margin: 0; }
+.login-card p { margin: 0; }
+.center { text-align: center; font-size: .9rem; }
+
+.bar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 10px 16px; background: var(--green); color: #fff; }
+.bar h1 { margin: 0; font-size: 1.25rem; white-space: nowrap; }
+.bar h1 small { font-weight: 400; opacity: .8; font-size: .8rem; margin-left: 6px; }
+.kpis { display: flex; gap: 10px; flex: 1; flex-wrap: wrap; }
+.kpi { background: rgba(255,255,255,.16); border-radius: 8px; padding: 4px 12px; font-size: .8rem; line-height: 1.25; }
+.kpi b { display: block; font-size: 1.05rem; }
+.kpi.alert { background: #ff6d00; }
+.who { font-size: .85rem; opacity: .9; }
+.btn-link { color: #fff; font-size: .9rem; }
+.bar button.light { background: #fff; color: var(--green); padding: 7px 12px; }
+
+#tabs { display: flex; gap: 4px; padding: 10px 16px 0; border-bottom: 2px solid var(--green); overflow-x: auto; background: #f6f8f4; position: sticky; top: 0; z-index: 10; }
+#tabs button { background: var(--green-l); color: var(--green); border-radius: 8px 8px 0 0; white-space: nowrap; }
+#tabs button:hover:not(:disabled) { background: #c8e6c9; }
+#tabs button.active { background: var(--green); color: #fff; }
+#tabs .count { background: var(--amber); color: #fff; border-radius: 999px; font-size: .72rem; padding: 1px 7px; margin-left: 4px; }
+
+#view { padding: 16px; max-width: 1200px; margin: 0 auto; }
+.panel { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,.08); margin-bottom: 16px; }
+.panel h2 { margin: 0 0 4px; font-size: 1.15rem; }
+.panel > p.muted { margin: 0 0 12px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+.row.center-y { align-items: center; }
+.grow { flex: 1; min-width: 140px; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; }
+@media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } }
+
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border-bottom: 1px solid #eee; text-align: left; vertical-align: middle; }
+th { font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); white-space: nowrap; }
+td input { width: 90px; padding: 5px 7px; }
+td input.wide, td input.name { width: 150px; }
+tr.low { background: #fff8e1; }
+tr.out { background: #fdecea; }
+td.num, th.num { text-align: right; }
+td button { padding: 5px 10px; font-size: .85rem; }
+
+.orders { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.ocard { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.ocard.pending { border-left: 5px solid var(--amber); }
+.ocard.billed { border-left: 5px solid var(--green); }
+.ocard.cancelled { border-left: 5px solid #90a4ae; opacity: .8; }
+.ocard header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.ocard .meta { font-size: .82rem; color: var(--muted); }
+.ocard table td, .ocard table th { padding: 4px 6px; font-size: .9rem; }
+.ocard .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 4px; }
+.ocard .actions select, .ocard .actions input { padding: 6px 8px; }
+.ocard .actions input.disc { width: 80px; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; align-items: center; }
+.filters button.on { background: var(--green); color: #fff; }
+.filters button:not(.on) { background: #fff; color: var(--green); border: 1px solid var(--green); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; max-height: 260px; overflow-y: auto; }
+.chip { background: #fff; color: #222; border: 1px solid var(--line); text-align: left; padding: 8px 12px; font-weight: 500; line-height: 1.25; }
+.chip:hover:not(:disabled) { background: var(--green-l); border-color: var(--green); }
+.chip small { display: block; color: var(--muted); font-weight: 400; }
+.chip.low small { color: var(--amber); font-weight: 600; }
+.chip:disabled { background: #f3f3f3; color: #999; }
+.bill-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; padding: 10px 0; }
+.bill-total.big strong { font-size: 1.6rem; color: var(--green-d); }
+.bigbtn { width: 100%; padding: 14px; font-size: 1.1rem; }
+.seg { display: inline-flex; border: 1px solid var(--green); border-radius: 8px; overflow: hidden; }
+.seg button { border-radius: 0; background: #fff; color: var(--green); }
+.seg button.on { background: var(--green); color: #fff; }
+.sugg { position: relative; }
+.sugg-list { position: absolute; z-index: 5; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,.15); max-height: 220px; overflow-y: auto; }
+.sugg-list button { display: block; width: 100%; text-align: left; background: #fff; color: #222; border-radius: 0; font-weight: 400; }
+.sugg-list button:hover { background: var(--green-l) !important; }
+.modal.wide { width: min(460px, 100%); }
+.receipt { font-family: ui-monospace, Menlo, monospace; font-size: .9rem; }
+.receipt h2 { text-align: center; margin: 0; }
+.receipt .c { text-align: center; color: #555; }
+.receipt hr { border: none; border-top: 1px dashed #999; margin: 8px 0; }
+.receipt table td, .receipt table th { padding: 2px 4px; border: none; }
+.receipt .tot { display: flex; justify-content: space-between; font-weight: 700; }
+.no-print { margin-top: 14px; }
+.empty-note { text-align: center; color: var(--muted); padding: 30px 10px; }
+.mv-in { color: var(--green); font-weight: 700; }
+.mv-out { color: var(--red); font-weight: 700; }
+
+@media print {
+  body * { visibility: hidden; }
+  #receiptModal, #receiptModal * { visibility: visible; }
+  #receiptModal { position: absolute; inset: 0; background: #fff; display: block; padding: 0; }
+  .modal { box-shadow: none; width: 100%; }
+  .no-print, .modal .x { display: none !important; }
+}

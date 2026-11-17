@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fresh Mart – Order groceries online</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+  <header class="top">
+    <h1>🛒 Fresh Mart</h1>
+    <input id="search" type="search" placeholder="Search groceries…" aria-label="Search groceries">
+    <button id="accountBtn" class="secondary light">Login / Sign up</button>
+    <button id="cartBtn" class="light solid">Cart (<span id="cartCount">0</span>)</button>
+  </header>
+
+  <main id="products" aria-live="polite"></main>
+
+  <!-- Cart drawer -->
+  <div id="backdrop" class="hidden"></div>
+  <aside id="cart" class="drawer hidden" role="dialog" aria-label="Your cart">
+    <div class="drawer-head">
+      <h2>🛒 Your Cart</h2>
+      <button class="drawer-close" data-close aria-label="Close" title="Close (Esc)">✕</button>
+    </div>
+    <ul id="cartItems" class="list"></ul>
+    <div class="drawer-foot">
+      <div id="checkoutFields" class="hidden">
+        <label class="field">Delivery address (or write "Pickup")
+          <textarea id="address" rows="2" maxlength="300" placeholder="House no, street, area"></textarea>
+        </label>
+        <label class="field">Note for the shop (optional)
+          <input id="note" maxlength="300" placeholder="e.g. call before delivery">
+        </label>
+      </div>
+      <p class="total"><span>Total</span><strong id="cartTotal">₹0</strong></p>
+      <button id="placeOrder">Place order</button>
+      <p class="muted small">You pay when the order is delivered or picked up. The shop will bill it after packing.</p>
+      <button class="secondary" data-close>← Continue shopping</button>
+    </div>
+  </aside>
+
+  <!-- Account / orders drawer -->
+  <aside id="account" class="drawer hidden" role="dialog" aria-label="My account">
+    <div class="drawer-head">
+      <h2 id="accountTitle">My orders</h2>
+      <button class="drawer-close" data-close aria-label="Close" title="Close (Esc)">✕</button>
+    </div>
+    <ul id="orderList" class="list"></ul>
+    <div class="drawer-foot">
+      <button id="logoutBtn" class="secondary">Log out</button>
+    </div>
+  </aside>
+
+  <!-- Login / sign up -->
+  <div id="authModal" class="modal-backdrop hidden">
+    <div class="modal" role="dialog" aria-label="Login or sign up">
+      <button class="x" data-close-auth aria-label="Close">✕</button>
+      <h2 id="authTitle">Log in</h2>
+      <form id="loginForm">
+        <label class="field">Phone number<input name="username" inputmode="tel" autocomplete="username" required></label>
+        <label class="field">Password<input name="password" type="password" autocomplete="current-password" required></label>
+        <p class="error-text" id="loginError"></p>
+        <button type="submit">Log in</button>
+        <button type="button" class="link" id="toSignup">New here? Create an account</button>
+      </form>
+      <form id="signupForm" class="hidden">
+        <label class="field">Your name<input name="name" autocomplete="name" maxlength="80" required></label>
+        <label class="field">Phone number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="10-digit mobile number"></label>
+        <label class="field">Password (min 6 characters)<input name="password" type="password" autocomplete="new-password" minlength="6" required></label>
+        <p class="error-text" id="signupError"></p>
+        <button type="submit">Create account</button>
+        <button type="button" class="link" id="toLogin">Already registered? Log in</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="shop.js"></script>
+</body>
+</html>

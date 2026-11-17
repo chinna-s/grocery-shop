@@ -1,0 +1,9 @@
+{
+  "name": "fresh-mart",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fresh Mart grocery shop: customer ordering site plus stock and billing for the shop",
+  "engines": { "node": ">=22.13" },
+  "scripts": { "start": "node server/server.js", "test": "node --test test/*.test.js" }
+}

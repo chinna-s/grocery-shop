@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Fresh Mart – Shop Panel</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- Staff login -->
+  <section id="loginView" class="login-wrap hidden">
+    <form id="loginForm" class="login-card">
+      <h1>🛒 Fresh Mart</h1>
+      <p class="muted">Shop panel — staff and owner login</p>
+      <label class="field">Username<input name="username" autocomplete="username" required autofocus></label>
+      <label class="field">Password<input name="password" type="password" autocomplete="current-password" required></label>
+      <p class="error-text" id="loginError"></p>
+      <button type="submit">Log in</button>
+      <a href="/" class="muted center">← Back to the shop website</a>
+    </form>
+  </section>
+
+  <div id="app" class="hidden">
+    <header class="bar">
+      <h1>🛒 Fresh Mart <small>Shop Panel</small></h1>
+      <div class="kpis" id="kpis"></div>
+      <span class="who" id="who"></span>
+      <a href="/" class="btn-link">View website</a>
+      <button id="logoutBtn" class="secondary light">Log out</button>
+    </header>
+    <nav id="tabs" role="tablist"></nav>
+    <main id="view"></main>
+  </div>
+
+  <div id="receiptModal" class="modal-backdrop hidden">
+    <div class="modal wide">
+      <button class="x" id="receiptClose" aria-label="Close">✕</button>
+      <div id="receipt"></div>
+      <div class="row no-print"><button id="printBtn">🖨 Print</button><button id="receiptDone" class="secondary">Close</button></div>
+    </div>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
